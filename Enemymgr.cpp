@@ -1,4 +1,5 @@
 #include "Enemymgr.hpp"
+#include "Gamemgr.hpp"
 
 void Enemymgr::add(Vec2 pos, Vec2 velocity, double radius){
     enemies.push_back(std::make_shared<EnemyA>(pos, velocity, radius));
@@ -9,7 +10,7 @@ void Enemymgr::update(){
     auto it = enemies.begin();
     while(it != enemies.end()){
 	Vec2 pos = (*it)->getpos();
-	if(pos.x < 0 || pos.x > Window::ClientWidth() || pos.y < 0 || pos.y > Window::ClientHeight()){
+	if(pos.x < 0 || pos.x > Window::ClientWidth() || pos.y > Window::ClientHeight()){
 	    it = enemies.erase(it);
 	}else{
 	    it++;
@@ -25,5 +26,9 @@ void Enemymgr::draw(){
     //敵描画
     for(auto& enemy: enemies){
 	enemy->draw();
+    }
+    //debug
+    if(gamemgr.debugmode()){
+	Print << U"敵の数:" << enemies.size();
     }
 }

@@ -6,14 +6,12 @@
 
 class Enemy{
     protected:
+	int timer;
 	Vec2 pos;
 	Vec2 velocity;
 	std::vector<std::shared_ptr<Notes>>notes;
     public:
-	Enemy(Vec2 pos, Vec2 velocity){
-	    this->pos = pos;
-	    this->velocity = velocity;
-	}
+	Enemy(Vec2 pos, Vec2 velocity):timer(0), pos(pos), velocity(velocity){}
 	virtual ~Enemy(){}
 	Vec2 getpos(){
 	    return pos;

@@ -5,26 +5,31 @@
 
 class Notes{
     protected:
-	Vec2 pos;
+	int timer;
+	int lane;   //notesが位置するレーン0~9
+	bool exit;  //true:存在する
+	Vec2 lpos;
+	Vec2 rpos;
 	Vec2 velocity;
     public:
-	Notes(Vec2 pos, Vec2 velocity){
-	    this->pos = pos;
-	    this->velocity = velocity;
-	}
+	Notes(int lane, Vec2 lpos, Vec2 rpos, Vec2 velocity):timer(0), lane(lane), exit(true), lpos(lpos), rpos(rpos), velocity(velocity){}
 	virtual ~Notes(){}
-	virtual void update()=0;
+	int getlane(){return lane;}
+	bool getexit(){return exit;}
+	Vec2 getlpos(){return lpos;}
+	Vec2 getrpos(){return rpos;}
+	Vec2 getvelocity(){return velocity;}
+	virtual void update(Vec2 lpos, Vec2 rpos)=0;
 	virtual void draw()=0;
 };
 
 class NotesA:public Notes{  //横線のノーツ
     private:
-	double length;
 	int width;
     public:
-	NotesA(Vec2 pos, Vec2 velocity, double length, int width):Notes(pos, velocity),length(length),width(width){}
+	NotesA(int lane, Vec2 lpos, Vec2 rpos, Vec2 velocity = Vec2(0, 5)):Notes(lane, lpos, rpos, velocity), width(3){}
 	~NotesA(){}
-	void update() override;
+	void update(Vec2 lpos, Vec2 rpos) override;
 	void draw() override;
 };
 
