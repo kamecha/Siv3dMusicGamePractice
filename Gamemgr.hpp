@@ -15,6 +15,9 @@ class Gamemgr{
 	Gamemgr():timer(0), debug(false){}
 	bool debugmode(){return debug;}
 	void changemode() {debug = !debug;}
+	void changezanki()  {player.changezanki();}
+	int gettime(){return timer;}
+	void addnotes(int timer, int line) {enemymgr.addnotes(timer, line);}
 	void update();
 	void draw();
 };

@@ -12,6 +12,9 @@ void Gamemgr::update(){
 
 void Gamemgr::draw(){
     ClearPrint();
+    if(debug){
+	Print << U"timer:" << timer;
+    }
     enemymgr.draw();
     player.draw();
 }

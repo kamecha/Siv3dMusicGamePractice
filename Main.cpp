@@ -2,7 +2,6 @@
 #include "Gamemgr.hpp"
 
 void Main(){
-    Gamemgr gamemgr;
     while(System::Update()){
 	gamemgr.update();
 	gamemgr.draw();

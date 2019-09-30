@@ -5,8 +5,12 @@
 
 class Player{
     private:
+	int zanki;
+	int score;
+	int combo;
     public:
-	Player(){}
+	Player():zanki(100), score(0), combo(0){}
+	void changezanki();
 	void update();
 	void draw();
 };

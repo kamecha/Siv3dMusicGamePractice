@@ -3,8 +3,11 @@
 
 void EnemyA::update(){
     //ノーツ追加
-    if(timer%10 == 0 || timer%50 == 0){
-	notes.push_back(std::make_shared<NotesA>(Random(0, 9), pos, pos));
+    if(timer%20 == 0 || timer%55 == 0){
+	int line = Random(0, 9);
+	notes.push_back(std::make_shared<NotesA>(line, pos, pos));
+	int time = timer + (Window::ClientHeight()/5*4 - pos.y)/5;    //timerから到着時刻の計算
+	gamemgr.addnotes(time, line);
     }
     //ノーツ制御
     for(auto& note: notes){
@@ -26,8 +29,9 @@ void EnemyA::update(){
     auto it = notes.begin();
     while(it != notes.end()){
 	Vec2 pos = (*it)->getlpos();
-	if(pos.x < 0 || pos.x > Window::ClientWidth() || pos.y > Window::ClientHeight()){
+	if(pos.x < 0 || pos.x > Window::ClientWidth() || pos.y > Window::ClientHeight() || !(*it)->getexit()){
 	    it = notes.erase(it);
+	    gamemgr.changezanki();
 	}else{
 	    it++;
 	}	
