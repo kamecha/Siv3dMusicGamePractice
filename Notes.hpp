@@ -5,14 +5,14 @@
 
 class Notes{
     protected:
-	int timer;
 	int lane;   //notesが位置するレーン0~9
 	bool exit;  //true:存在する
 	Vec2 lpos;
-	Vec2 rpos;
+	int width;
+	int height;
 	Vec2 velocity;
     public:
-	Notes(int lane, Vec2 lpos, Vec2 rpos, Vec2 velocity):timer(0), lane(lane), exit(true), lpos(lpos), rpos(rpos), velocity(velocity){}
+	Notes(int lane, Vec2 lpos, Vec2 rpos, Vec2 velocity):timer(0), lane(lane), exit(true), lpos(lpos), velocity(velocity){}
 	virtual ~Notes(){}
 	int getlane(){return lane;}
 	bool getexit(){return exit;}

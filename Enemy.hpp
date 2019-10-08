@@ -9,22 +9,17 @@ class Enemy{
 	int timer;
 	Vec2 pos;
 	Vec2 velocity;
-	std::vector<std::shared_ptr<Notes>>notes;
     public:
 	Enemy(Vec2 pos, Vec2 velocity):timer(0), pos(pos), velocity(velocity){}
 	virtual ~Enemy(){}
-	Vec2 getpos(){
-	    return pos;
-	}
 	virtual void update()=0;
 	virtual void draw()=0;
 };
 
 class EnemyA:public Enemy{  //静止
     private:
-	double radius;
     public:
-	EnemyA(Vec2 pos, Vec2 velocity = Vec2(0, 0),  double radius = 5):Enemy(pos, velocity), radius(radius){}
+	EnemyA(Vec2 pos, Vec2 velocity = Vec2(0, 0)):Enemy(pos, velocity){}
 	~EnemyA(){}
 	void update() override;	
 	void draw() override;	

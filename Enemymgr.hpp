@@ -15,11 +15,9 @@ public:
 class Enemymgr{
     private:
 	std::vector<std::shared_ptr<Enemy>>enemies;
-	std::queue<Lane>notestime;   //ノーツの到着時刻
     public:
 	Enemymgr(){}
-	void add(Vec2 pos, Vec2 velocity = Vec2(0, 0), double radius = 3);
-	void addnotes(int time, int line);    //ノーツの発現時刻から到着時刻を割り出す
+	void add(Vec2 pos, Vec2 velocity = Vec2(0, 0));
 	void update();
 	void draw();
 };
