@@ -21,11 +21,18 @@ class Enemy{
         virtual void draw() = 0;
 };
 
-class A:public Enemy{
-    private:
+class A:public Enemy{   //静止
     public:
         A(Vec2 pos, Vec2 velocity = Vec2(0, 0)):Enemy(pos, velocity){}
         ~A(){}
+        void update() override;
+        void draw() override;
+};
+
+class B:public Enemy{   //平行移動
+    public:
+        B(Vec2 pos, Vec2 velocity = Vec2(0, 0)):Enemy(pos, velocity){}
+        ~B(){}
         void update() override;
         void draw() override;
 };
