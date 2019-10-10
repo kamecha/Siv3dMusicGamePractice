@@ -6,6 +6,7 @@
 //
 
 #include "Gamemgr.hpp"
+#include "Note.hpp"
 
 void Gamemgr::update(){
     Fumen front = fumen.front();
@@ -41,6 +42,10 @@ void Gamemgr::update(){
                         break;
                 }
                 enemymgr.addenemy(front.pos, front.ekind);
+                break;
+            case 1: //ノーツ
+                Vec2 epos = enemymgr.enemies[front.enote]->pos;
+                enemymgr.addnote(Note(epos, 0, 3, front.lane, front.enote));
                 break;
         }
         fumen.pop();

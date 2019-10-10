@@ -10,17 +10,21 @@
 
 #include <Siv3D.hpp>
 #include "Enemy.hpp"
+#include "Note.hpp"
 
 class Enemymgr{
-    private:
-        std::vector<Enemy*>enemies;
     public:
+        std::vector<Enemy*>enemies;
+        std::vector<std::vector<Note>>notes;
+
+        Enemymgr():notes(10){}
         ~Enemymgr(){
             for(int i = 0; i < enemies.size(); i++){
                 delete enemies[i];
             }
         }
         void addenemy(Vec2 pos, int kind);
+        void addnote(Note note);
         void update();
         void draw();
 };
