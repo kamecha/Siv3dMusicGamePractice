@@ -20,6 +20,7 @@ void Main(){
         int lane = Parse<int>(csv[row][6]);
         gamemgr.fumen.push(Fumen(time, flag, ekind, ex, ey, enote, lane));
     }
+    Window::SetTitle(U"音ゲーもどき");
     while(System::Update()){
         gamemgr.update();
         gamemgr.draw();
