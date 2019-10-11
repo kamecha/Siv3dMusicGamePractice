@@ -6,6 +6,22 @@
 //
 
 #include "Player.hpp"
+#include "Gamemgr.hpp"
+#include "Note.hpp"
+
+void Player::judge(int lane){
+    std::vector<Note>notes = gamemgr.enemymgr.notes[lane];
+    Plane clane = plane[lane];
+    for(int lane = 0; lane < notes.size(); lane++){   //laneに存在するノーツの数
+        if(notes[lane].lpos.y > clane.lpos.y + clane.height + 10)    continue;
+        if(notes[lane].lpos.y <= clane.lpos.y + clane.height + 10 || notes[lane].lpos.y >= clane.lpos.y - 10 - notes[lane].height){
+            if(notes[lane].lpos == clane.lpos)  score += 10000;
+            combo++;
+            score += 100;
+        }
+        if(notes[lane].lpos.y < clane.lpos.y - 10 - notes[lane].height) break;
+    }
+}
 
 void Player::update(){
     //判定レーン
@@ -15,10 +31,25 @@ void Player::update(){
         plane[i].width = Window::ClientWidth()/12;
         plane[i].height = 5;
     }
+    //judge
+    if(KeyA.down()) judge(0);
+    if(KeyS.down()) judge(1);
+    if(KeyD.down()) judge(2);
+    if(KeyF.down()) judge(3);
+    if(KeyG.down()) judge(4);
+    if(KeyH.down()) judge(5);
+    if(KeyJ.down()) judge(6);
+    if(KeyK.down()) judge(7);
+    if(KeyL.down()) judge(8);
+    //if(KeyA.down()) judge(9);
 }
 
 void Player::draw(){
+    //判定レーン
     for(auto lane: plane){
         lane.draw();
     }
+    //combo&score
+    Print << U"combo:" << combo;
+    Print << U"score:" << score;
 }

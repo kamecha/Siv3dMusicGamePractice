@@ -31,8 +31,12 @@ class Player{
     private:
         std::vector<Plane>plane;
     public:
-        Player():plane(10){ }
+        int combo;
+        int score;
+
+        Player():plane(10), combo(0), score(0){ }
         Plane getplane(int i){return plane[i];}     //iの判定レーン情報
+        void judge(int lane);
         void update();
         void draw();
 };

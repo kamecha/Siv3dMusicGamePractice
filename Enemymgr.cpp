@@ -29,9 +29,21 @@ void Enemymgr::update(){
         enemy->update();
     }
     //ノーツ
-    for(int lane = 0; lane < notes.size(); lane++){
+    for(int lane = 0; lane < notes.size(); lane++){ //位置変更
         for(int note = 0; note < notes[lane].size(); note++){
             notes[lane][note] = enemies[notes[lane][note].enemy]->noteupdate(notes[lane][note]);
+        }
+    }
+    //ノーツ削除
+    for(int lane = 0; lane < notes.size(); lane++){
+        auto it = notes[lane].begin();
+        while(it!=notes[lane].end()){
+            if(it->exit == false || it->lpos.y > Window::ClientHeight()){
+                it = notes[lane].erase(it);
+                gamemgr.player.combo = 0;
+            }else{
+                it++;
+            }
         }
     }
 }
