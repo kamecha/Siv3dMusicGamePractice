@@ -41,7 +41,7 @@ void Gamemgr::update(){
                         front.pos.y = Random<int>(0, Window::ClientHeight()/2);
                         break;
                 }
-                enemymgr.addenemy(front.pos, front.ekind);
+                enemymgr.addenemy(front.pos, front.ekind, 0);
                 break;
             case 1: //ノーツ
                 Vec2 epos = enemymgr.enemies[front.enote]->pos;

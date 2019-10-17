@@ -21,6 +21,10 @@ void Main(){
         int lane = Parse<int>(csv[row][6]);
         gamemgr.fumen.push(Fumen(time, flag, ekind, ex, ey, enote, lane));
     }
+    //画像読み込み
+    const Texture EnemyA(U"Data/enemy.png");
+    gamemgr.enemymgr.etexture.push_back(EnemyA);
+
     Window::SetTitle(U"音ゲーもどき");
     Scenemgr scenemgr;
     while(System::Update()){
