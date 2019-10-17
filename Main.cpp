@@ -1,5 +1,6 @@
 #include <Siv3D.hpp>
 #include "Gamemgr.hpp"
+#include "Scenemgr.hpp"
 
 void Main(){
     //csv読み込み
@@ -21,8 +22,9 @@ void Main(){
         gamemgr.fumen.push(Fumen(time, flag, ekind, ex, ey, enote, lane));
     }
     Window::SetTitle(U"音ゲーもどき");
+    Scenemgr scenemgr;
     while(System::Update()){
-        gamemgr.update();
-        gamemgr.draw();
+        scenemgr.update();
+        scenemgr.draw();
     }
 }
