@@ -15,7 +15,9 @@ class Scenemgr{
     public:
         std::stack<Scenebase*>scene;
 
-        Scenemgr(){}
+        Scenemgr(){
+            scene.push(new Title(0));
+        }
         ~Scenemgr(){
             while(!scene.empty()){
                 sdelete();

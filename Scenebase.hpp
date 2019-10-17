@@ -12,7 +12,9 @@
 
 class Scenebase{
     public:
-        Scenebase(){}
+        int kind;
+
+        Scenebase(int kind):kind(kind){}
         virtual ~Scenebase(){}
         virtual void update() = 0;
         virtual void draw() = 0;
@@ -20,7 +22,7 @@ class Scenebase{
 
 class Title:public Scenebase{
     public:
-        Title():Scenebase(){}
+        Title(int kind):Scenebase(kind){}
         ~Title(){}
         void update() override;
         void draw() override;
@@ -28,7 +30,7 @@ class Title:public Scenebase{
 
 class Game:public Scenebase{
     public:
-        Game():Scenebase(){}
+        Game(int kind):Scenebase(kind){}
         ~Game(){}
         void update() override;   
         void draw() override;   

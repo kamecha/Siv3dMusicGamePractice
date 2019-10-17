@@ -13,6 +13,7 @@ void Title::update(){
 }
 
 void Title::draw(){
+    ClearPrint();
     Print << U"Title画面だよ！";
     Print << U"キーボード選択をするつもりだよ";
 }

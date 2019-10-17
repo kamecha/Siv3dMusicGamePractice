@@ -15,11 +15,20 @@ void Scenemgr::sdelete(){
 }
 
 void Scenemgr::update(){
-    /*
-    if(scene.empty()){
-        scene.push(new Title);
+    switch(scene.top()->kind){
+        case 0:
+            if(KeyEnter.down()){
+                scene.push(new Game(1));
+            }
+            break;
+        case 1:
+            if(KeyEnter.down()){
+                sdelete();
+            }
+            break;
+        default:
+            break;
     }
-    */
     if(!scene.empty()){
         scene.top()->update();
     }
