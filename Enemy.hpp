@@ -17,7 +17,7 @@ class Enemy{
         Vec2 pos;
         Vec2 velocity;
 
-        Enemy(Texture image,Vec2 pos, Vec2 velocity):pos(pos), velocity(velocity){}
+        Enemy(Texture image,Vec2 pos, Vec2 velocity):image(image), pos(pos), velocity(velocity){}
         virtual ~Enemy(){}
         virtual Note noteupdate(Note note) = 0;
         virtual void update() = 0;
