@@ -10,16 +10,17 @@
 #include "Note.hpp"
 
 void Player::judge(int lane){
-    std::vector<Note>notes = gamemgr.enemymgr.notes[lane];
+    std::vector<Note>&notes = gamemgr.enemymgr.notes[lane];
     Plane clane = plane[lane];
     for(int lane = 0; lane < notes.size(); lane++){   //laneに存在するノーツの数
-        if(notes[lane].lpos.y > clane.lpos.y + clane.height + 10)    continue;
-        if(notes[lane].lpos.y <= clane.lpos.y + clane.height + 10 || notes[lane].lpos.y >= clane.lpos.y - 10 - notes[lane].height){
+        if(notes[lane].lpos.y > clane.lpos.y + clane.height + 30)    continue;
+        if(notes[lane].lpos.y <= clane.lpos.y + clane.height + 30 && notes[lane].lpos.y >= clane.lpos.y - 30 - notes[lane].height){
             if(notes[lane].lpos == clane.lpos)  score += 10000;
             combo++;
             score += 100;
+            notes[lane].exit = false;
         }
-        if(notes[lane].lpos.y < clane.lpos.y - 10 - notes[lane].height) break;
+        if(notes[lane].lpos.y < clane.lpos.y - 30 - notes[lane].height) break;
     }
 }
 
@@ -41,7 +42,7 @@ void Player::update(){
     if(KeyJ.down()) judge(6);
     if(KeyK.down()) judge(7);
     if(KeyL.down()) judge(8);
-    //if(KeyA.down()) judge(9);
+    if(KeySemicolon_US.down())  judge(9);
 }
 
 void Player::draw(){
