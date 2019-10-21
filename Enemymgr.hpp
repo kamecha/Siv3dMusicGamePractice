@@ -15,6 +15,7 @@
 class Enemymgr{
     public:
         std::vector<Enemy*>enemies;
+        std::vector<Texture>etexture;
         std::vector<std::vector<Note>>notes;
 
         Enemymgr():notes(10){}
@@ -23,7 +24,7 @@ class Enemymgr{
                 delete enemies[i];
             }
         }
-        void addenemy(Vec2 pos, int kind);
+        void addenemy(Vec2 pos, int kind, int imagenum);
         void addnote(Note note);
         void update();
         void draw();

@@ -8,13 +8,13 @@
 #include "Enemymgr.hpp"
 #include "Gamemgr.hpp"
 
-void Enemymgr::addenemy(Vec2 pos, int kind){
+void Enemymgr::addenemy(Vec2 pos, int kind, int imagenum){
     switch(kind){
         case 0:
-            enemies.push_back(new A(pos));
+            enemies.push_back(new A(etexture[imagenum], pos));
             break;
         case 1:
-            enemies.push_back(new B(pos));
+            enemies.push_back(new B(etexture[imagenum], pos));
             break;
     }
 }

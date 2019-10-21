@@ -26,6 +26,8 @@ void A::draw(){
         Line(pos.x, pos.y, gamemgr.player.getplane(i).lpos.x, gamemgr.player.getplane(i).lpos.y).draw(2, ColorF(0.8, 0, 0, 0.8));
         Line(pos.x, pos.y, gamemgr.player.getplane(i).lpos.x + gamemgr.player.getplane(i).width, gamemgr.player.getplane(i).lpos.y).draw(2, ColorF(0.8, 0, 0, 0.8));
     }
+    //敵本体
+    image.draw(pos);
 }
 
 Note B::noteupdate(Note note){
@@ -47,4 +49,6 @@ void B::draw(){
         Line(pos.x, pos.y, gamemgr.player.getplane(i).lpos.x, gamemgr.player.getplane(i).lpos.y).draw(2, ColorF(0.8, 0, 0, 0.8));
         Line(pos.x, pos.y, gamemgr.player.getplane(i).lpos.x + gamemgr.player.getplane(i).width, gamemgr.player.getplane(i).lpos.y).draw(2, ColorF(0.8, 0, 0, 0.8));
     }
+    //敵本体
+    image.draw(pos);
 }
